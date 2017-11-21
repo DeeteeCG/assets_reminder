@@ -1,0 +1,46 @@
+<%= form_with(model: item, local: true) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :item_name %>
+    <%= form.text_field :item_name, id: :item_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand, id: :item_brand %>
+  </div>
+
+  <div class="field">
+    <%= form.label :'expiry/warranty_date' %>
+    <%= form.date_select :deadline, id: :item_deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shop %>
+    <%= form.text_field :shop, id: :item_shop %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note %>
+    <%= form.text_area :note, id: :item_note %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

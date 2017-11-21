@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    <%= link_to 'Home', root_path %>
     <div id="user-header">
       <% if logged_in? %>
         <%= link_to "Log Out", logout_path %>
