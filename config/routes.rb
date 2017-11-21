@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'items/new'
-
   # get 'static/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -10,5 +8,5 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy", as: "logout"
   resources :sessions, only: [:create]
   resources :users
-
+  resources :items
 end

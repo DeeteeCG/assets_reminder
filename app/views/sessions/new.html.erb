@@ -1,5 +1,7 @@
 <h1>Log In</h1>
 
+<%#= @message if @message %>
+
 <%= form_with url: sessions_path do %>
   <div class="field">
     <%= label_tag :email %>
