@@ -1,0 +1,5 @@
+class AddShopLocationToItems < ActiveRecord::Migration[5.1]
+  def change
+    add_column :items, :shop_location, :string
+  end
+end

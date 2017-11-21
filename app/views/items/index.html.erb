@@ -21,6 +21,7 @@
       <th>Brand</th>
       <th>Expiry/Warranty Date</th>
       <th>Shop</th>
+      <th>Shop Location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,7 +33,8 @@
         <td><%= item.brand %></td>
         <td><%= item.deadline %></td>
         <td><%= item.shop %></td>
-        <td><%= link_to 'Show', item %></td>
+        <td><%= item.shop_location %></td>
+        <td><%= link_to 'Show', item,  data: { turbolinks: false } %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

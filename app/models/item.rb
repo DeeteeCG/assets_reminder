@@ -1,4 +1,8 @@
 class Item < ApplicationRecord
+
+  geocoded_by :shop_location
+  after_validation :geocode
+
   belongs_to :user
 
 
