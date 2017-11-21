@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
       @items = Item.search(params[:search])
     else
       @items = Item.all
-end
+    end
   end
 
   def new
@@ -24,6 +24,10 @@ end
   end
 
   def show
+    @hash = Gmaps4rails.build_markers(@item) do |item, marker|
+      marker.lat item.latitude
+      marker.lng item.longitude
+    end
   end
 
   def edit
@@ -58,7 +62,7 @@ end
   end
 
   def item_params
-    params.require(:item).permit(:user_id, :item_name, :deadline, :brand, :note, :shop)
+    params.require(:item).permit(:user_id, :item_name, :deadline, :brand, :note, :shop, :shop_location, :latitude, :longitude)
   end
 
 end
