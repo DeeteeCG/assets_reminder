@@ -1,19 +1,23 @@
 <h1>Static#index</h1>
 <p>Find me in app/views/static/index.html.erb</p>
 
-<script>
-$(document).ready(function () {
-    $("button").click(function(){
-        $(this).nextUntil('.button').toggle(300);
-    });
-});
-</script>
+
 
 <h2><button class="button">About Us</button></h2>
-<li class="content"> We let you save your item's expiry or warranty date for your reminder </li>
+<p class="content"> We let you save your item's expiry or warranty date for your reminder </p>
 
 
 <% if logged_in? %>
   <%= link_to 'Create item reminder', new_item_path %><br>
   <%= link_to 'View all items created', items_path %>
 <% end %>
+
+<script>
+$(document).ready(function () {
+    $("button").click(function(){
+      console.log("hi");
+      $(".content").toggle(300);
+        // $(this).nextUntil('.button').toggle(300);
+    });
+});
+</script>
