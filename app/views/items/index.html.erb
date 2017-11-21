@@ -28,7 +28,7 @@
 
   <tbody>
     <% @items.where(user_id: current_user.id).order('deadline, item_name').each do |item| %>
-      <tr>
+      <tr id="row_<%=item.id%>">
         <td><%= item.item_name %></td>
         <td><%= item.brand %></td>
         <td><%= item.deadline %></td>
@@ -36,7 +36,7 @@
         <td><%= item.shop_location %></td>
         <td><%= link_to 'Show', item,  data: { turbolinks: false } %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: 'delete_item' %></td>
       </tr>
     <% end %>
   </tbody>
