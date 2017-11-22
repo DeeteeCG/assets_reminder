@@ -11,6 +11,13 @@
   <%= link_to 'Create item reminder', new_item_path %><br>
   <%= link_to 'View all items created', items_path %>
 <% end %>
+<br>
+<br>
+
+<% if logged_in? && current_user.admin? %>
+  <%= link_to 'Check all users', users_path %>
+<% end %>
+
 
 <script>
 $(document).ready(function () {
