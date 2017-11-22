@@ -9,5 +9,15 @@ class User < ApplicationRecord
 
   validates :password, presence: true, length: { :in => 7..20, message: "password too short" }, on: :create
 
+  enum role: [ :user, :admin ]
+
   has_many :items, dependent: :destroy
+
+  def self.search(search)
+    # search = search.downcase
+    self.where("first_name ILIKE ? OR
+                last_name ILIKE ?",
+                "%#{search}%",
+                "%#{search}%")
+  end
 end
