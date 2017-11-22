@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.all
+    # @users = User.all
     if current_user.role != 'admin'
       redirect_to root_url
     end
@@ -33,15 +33,16 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { render :index, notice: 'User was successfully updated.' }
-        format.json { render :index, status: :ok, location: @user }
+    # respond_to do |format|
+      if @user.update(allowed_params)
+        # format.html { render :index, notice: 'User was successfully updated.' }
+        # format.json { render :index, status: :ok, location: @user }
+        redirect_to users_path
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
+    # end
   end
 
   def destroy
